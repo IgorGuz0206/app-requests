@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Item } from '../item';
 
@@ -29,7 +29,12 @@ export class RequestsComponent implements OnInit {
   }
 
   postData(): void {
-  this.http.post<Item>(this.itemsUrl, this.item).subscribe(
+    const url = this.itemsUrl
+    const data = this.item
+    const headers = new HttpHeaders({'Content-Type': 'application/json'})
+    const options = {headers}
+
+    this.http.post<Item>(url, data, options).subscribe(
     res => this.items.push(res),
     err => console.log(err)
   )
