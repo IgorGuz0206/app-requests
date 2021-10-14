@@ -1,3 +1,16 @@
 <ul>
   <li *ngFor="let item of items">{{item.id}} | {{item.name}}</li>
 </ul>
+
+<div>
+  <label for="itemID">ID:</label>
+  <input type="text" id="itemID" placeholder="Enter ID" [(ngModel)]="item.id">
+</div>
+
+<div>
+  <label for="itemID">name:</label>
+  <input type="text" id="itemName" placeholder="Enter Name" [(ngModel)]="item.name">
+</div>
+
+<button (click)="postData()">Save:</button>
+<button (click)="clearAndGet()">Re-read data from server</button>
